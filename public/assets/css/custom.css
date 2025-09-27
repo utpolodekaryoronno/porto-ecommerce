@@ -1,0 +1,67 @@
+.form-control.w-100{
+    max-width: 100%;
+    width: 100% !important;
+}
+.btn-icon{
+    min-width: 20px !important;
+    padding: 0.6rem 1rem;
+}
+.table td, .table th {
+    vertical-align: middle;
+}
+.shadow {
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.10)!important;
+}
+.show-card-body{
+    padding-bottom: 10px;
+}
+.show-card-body img{
+    max-width: 300px;
+    width: 100%;
+    height: auto;
+    margin: auto;
+    border-radius: 10px;
+}
+.card-header::after {
+
+    content: inherit;
+}
+.swal2-popup .swal2-styled:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+
+.cover{
+    position: relative;
+}
+.cover img{
+    height: 120px;
+    width: auto;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.cover::after{
+    position: absolute;
+    content: "Click Here";
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: 6px;
+    background: #000;
+    opacity: 0.6;
+    z-index: 9;
+    visibility: hidden;
+    color: #FFF;
+    font-size: 14px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.cover:hover.cover::after{
+    visibility: visible;
+}
+

@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Porto - Bootstrap eCommerce Template</title>
+    <title>@yield("title", "Porto eCommerce ")</title>
 
     <meta name="keywords" content="HTML5 Template" />
     <meta name="description" content="Porto - Bootstrap eCommerce Template">
@@ -30,10 +30,17 @@
 
     <!-- Plugins CSS File -->
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
+    {{-- dataTables --}}
+    <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Toastr CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
     <!-- Main CSS File -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/skins/skin-demo-4.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
 </head>
 <body>
     <div class="page-wrapper">
@@ -144,27 +151,6 @@
         </div><!-- End .mobile-menu-wrapper -->
     </div><!-- End .mobile-menu-container -->
 
-    <div class="newsletter-popup mfp-hide" id="newsletter-popup-form" style="background-image: url(assets/images/newsletter_popup_bg.jpg)">
-        <div class="newsletter-popup-content">
-            <img src="assets/images/logo-black.png" alt="Logo" class="logo-newsletter">
-            <h2>BE THE FIRST TO KNOW</h2>
-            <p>Subscribe to the Porto eCommerce newsletter to receive timely updates from your favorite products.</p>
-            <form action="#">
-                <div class="input-group">
-                    <input type="email" class="form-control" id="newsletter-email" name="newsletter-email" placeholder="Email address" required>
-                    <input type="submit" class="btn" value="Go!">
-                </div><!-- End .from-group -->
-            </form>
-            <div class="newsletter-subscribe">
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" value="1">
-                        Don't show this popup again
-                    </label>
-                </div>
-            </div>
-        </div><!-- End .newsletter-popup-content -->
-    </div><!-- End .newsletter-popup -->
 
     <!-- Add Cart Modal -->
     <div class="modal fade" id="addCartModal" tabindex="-1" role="dialog" aria-labelledby="addCartModal" aria-hidden="true">
@@ -186,13 +172,97 @@
     <a id="scroll-top" href="#top" title="Top" role="button"><i class="icon-angle-up"></i></a>
 
     <!-- Plugins JS File -->
-    <script src="{{ asset("assets/js/jquery.min.js") }}"></script>
+    {{-- <script src="{{ asset("assets/js/jquery.min.js") }}"></script> --}}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="{{ asset("assets/js/bootstrap.bundle.min.js") }}"></script>
     <script src="{{ asset("assets/js/plugins.min.js") }}"></script>
+    <!-- dataTables JS -->
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <!-- Toastr JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    {{-- sweetalert --}}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- Main JS File -->
     <script src="{{ asset("assets/js/main.min.js") }}"></script>
-</body>
 
-<!-- Mirrored from portotheme.com/html/porto_ecommerce/demo_4/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Apr 2020 12:53:12 GMT -->
+    <!-- dataTables JS -->
+    <script>
+        $(document).ready(function() {
+            $('#myDataTable').DataTable({
+                responsive: true,
+                pageLength: 5,
+                lengthMenu: [5, 10, 25, 50],
+            });
+        });
+    </script>
+
+    <!-- Toastr JS -->
+
+    <script>
+        toastr.options = {
+            "closeButton": true,
+            "progressBar": true,
+            "positionClass": "toast-top-right",
+            "timeOut": "6000"
+        }
+
+        @if ($errors->any())
+            toastr.error("{{ $errors->first() }}");
+        @endif
+
+        @if(session('success'))
+            toastr.success("{{ session('success') }}");
+        @endif
+
+    </script>
+
+
+    {{-- Dynamic Delete Confirmation with SweetAlert --}}
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelectorAll(".delete-form").forEach(form => {
+                form.addEventListener("submit", function (e) {
+                    e.preventDefault(); // stop form submission
+
+                    let message = form.getAttribute("data-message") || "Are you sure you want to delete this item?";
+
+                    Swal.fire({
+                        title: "Confirm Delete",
+                        text: message,
+                        icon: "question",
+                        showCancelButton: true,
+                        confirmButtonColor: "#d33",
+                        cancelButtonColor: "#3085d6",
+                        confirmButtonText: "Yes, delete it!",
+                        cancelButtonText: "Cancel"
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            form.submit(); // finally submit if confirmed
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+
+    // Cover change js ==============================================
+    <script>
+        function previewFile(input) {
+            const file = input.files[0];
+            if (file) {
+                const reader = new FileReader();
+
+                reader.onload = function (e) {
+                    document.getElementById('previewImage').src = e.target.result;
+                };
+
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
+
+
+</body>
 </html>
