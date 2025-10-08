@@ -80,8 +80,11 @@ class ProductController extends Controller
             ]);
         }
 
-        // Many to Many relationship with category
+        // Many to Many relationship attach with category
         $product->categories()->attach($request->categories);
+
+        // Many to Many relationship attach with tag
+        $product->tags()->attach($request->tags);
 
 
         return redirect()->route('product.index')->with('success', 'Product created successfully.');
@@ -94,10 +97,15 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
+        // kon product ar under a kon gallery, brand, categories, tags ase shegula dekhano jabe
+
         // return $product->gallery;
         // return $product->load('gallery');
         // return $product->brand;
         // return $product->categories;
+        // return $product->tags;
+
+        // return $product->load('gallery', 'brand', 'categories', 'tags');
     }
 
     /**

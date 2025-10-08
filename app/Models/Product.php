@@ -2,6 +2,10 @@
 
 namespace App\Models;
 
+use App\Models\Tag;
+use App\Models\Brand;
+use App\Models\Gallery;
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
@@ -33,7 +37,12 @@ class Product extends Model
 
     // Many to Many relationship with Category
     public function categories(){
-        return $this->belongsToMany(Category::class, 'category_product', 'product_id', 'category_id');
+        return $this->belongsToMany(Category::class);
+    }
+
+    // Many to Many relationship with Tag
+    public function tags(){
+        return $this->belongsToMany(Tag::class);
     }
 
 }
