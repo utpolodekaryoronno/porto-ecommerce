@@ -17,7 +17,8 @@
                                     <th>#</th>
                                     <th>Name</th>
                                     <th>Slug</th>
-                                    <th>Logo</th>
+                                    <th>Categories</th>
+                                    <th>Photo</th>
                                     <th>Created At</th>
                                     <th class="text-right">Action</th>
                                 </tr>
@@ -27,12 +28,21 @@
 
                                 @foreach ($products as $product)
                                     <tr>
-                                        <td>{{$product->iteration}}</td>
+                                        <td>{{$loop->iteration}}</td>
                                         <td>{{$product->name}}</td>
                                         <td>{{$product->slug}}</td>
                                         <td>
-                                            @if($product->logo)
-                                                <a href="#"><img src="{{ asset('media/product/' . $product->logo) }}" alt="{{ $product->name }}" style="width: 70px; height: 40px; border-radius: 5px;"></a>
+                                            @foreach ( $product->categories as $cat )
+                                                <span class="badge badge-info">{{ $cat->name }}</span>
+                                            @endforeach
+                                        </td>
+                                        <td>
+                                            @if($product->gallery->isNotEmpty())
+                                                <a href="#">
+                                                    <img src="{{ asset('media/product/' . $product->gallery->first()->file_name) }}"
+                                                        alt="{{ $product->name }}"
+                                                        style="width: 70px; height: 40px; border-radius: 5px;">
+                                                </a>
                                             @else
                                                 N/A
                                             @endif
