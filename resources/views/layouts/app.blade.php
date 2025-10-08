@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<!-- Mirrored from portotheme.com/html/porto_ecommerce/demo_4/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Apr 2020 12:52:35 GMT -->
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">

@@ -5295,7 +5295,7 @@ form h2 {
 }
 
 select.form-control:not([size]):not([multiple]) {
-    height: 4.8rem
+    height: 3.8rem
 }
 
 select.form-control-sm:not([size]):not([multiple]) {
@@ -5324,7 +5324,8 @@ select.form-control-sm:not([size]):not([multiple]) {
 
 textarea.form-control {
     max-width: 680px;
-    min-height: 176px
+    min-height: 120px;
+    max-height: 150px;
 }
 
 .form-footer {

@@ -5,7 +5,7 @@
 
         <div class="side-menu-body">
             <ul>
-                <li><a href="#"><i class="icon-cat-shirt"></i>Products</a></li>
+                <li><a href="{{ route('product.index') }}"><i class="icon-cat-shirt"></i>Products</a></li>
                 <li><a href="{{route('category.index')}}"><i class="icon-cat-computer"></i>Category</a></li>
                 <li><a href="{{ route('tags.index') }}"><i class="icon-cat-gift"></i>Tags</a></li>
                 <li><a href="{{ route('brands.index') }}"><i class="icon-cat-couch"></i>Brands</a></li>
