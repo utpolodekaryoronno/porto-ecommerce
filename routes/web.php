@@ -9,8 +9,11 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FrontEndController;
 
 Route::get('/', [FrontEndController::class, 'index'])->name('home');
+
 Route::get('/admin', [AdminController::class, 'admin'])->name('admin');
 Route::resource('brands', BrandController::class);
 Route::resource('tags', TagController::class);
 Route::resource('category', CategoryController::class);
 Route::resource('product', ProductController::class);
+
+Route::get('/{slug}', [FrontEndController::class, 'ShowSingleProduct'])->name('single.product');

@@ -8295,7 +8295,8 @@ a:focus {
 
 .prod-thumbnail img {
     width: 100%;
-    cursor: pointer
+    cursor: pointer;
+    height: 100px;
 }
 
 .prod-thumbnail>div {

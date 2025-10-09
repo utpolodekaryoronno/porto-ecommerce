@@ -68,3 +68,6 @@
 .home-product-img{
     height: 250px !important;
 }
+.text-decoration-line-through {
+    text-decoration: line-through!important;
+}

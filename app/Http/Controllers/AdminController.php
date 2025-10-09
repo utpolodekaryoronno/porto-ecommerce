@@ -12,3 +12,5 @@ class AdminController extends Controller
         return view('BackEnd.product.index', compact('products'));
     }
 }
+
+
