@@ -27,27 +27,38 @@
                                 </div><!-- End .home-slide-content -->
                             </div><!-- End .home-slide -->
                         </div><!-- End .home-slider -->
+
+                        <div class="counters-section mb-4">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm-6 col-md-6 col-lg-4 count-container text-center">
+                                        <div class="count-wrapper">
+                                            <span class="count" data-from="0" data-to="200" data-speed="2000" data-refresh-interval="50">200</span>+
+                                        </div><!-- End .count-wrapper -->
+                                        <h4 class="count-title">MILLION CUSTOMERS</h4>
+                                    </div><!-- End .col-md-4 -->
+
+                                    <div class="col-sm-6 col-md-6 col-lg-4 count-container text-center">
+                                        <div class="count-wrapper">
+                                            <span class="count" data-from="0" data-to="1800" data-speed="2000" data-refresh-interval="50">1800</span>+
+                                        </div><!-- End .count-wrapper -->
+                                        <h4 class="count-title">TEAM MEMBERS</h4>
+                                    </div><!-- End .col-md-4 -->
+
+                                    <div class="col-sm-6 col-md-6 col-lg-4 count-container text-center">
+                                        <div class="count-wrapper">
+                                            <span class="count" data-from="0" data-to="24" data-speed="2000" data-refresh-interval="50">24</span><span>HR</span>
+                                        </div><!-- End .count-wrapper -->
+                                        <h4 class="count-title">SUPPORT AVAILABLE</h4>
+                                    </div><!-- End .col-md-4 -->
+
+                                </div><!-- End .row -->
+                            </div><!-- End .container -->
+                        </div>
                     </div><!-- End .col-lg-9 -->
 
-                    <div class="col-lg-3 order-lg-first">
-                        <a href="{{ route("admin") }}" class="btn btn-primary mb-1 d-block">Go Admin</a>
-                        <div class="side-custom-menu">
-                            <h2>TOP CATEGORIES</h2>
+                    @include('FrontEnd.frontendSidebar')
 
-                            <div class="side-menu-body">
-                                <ul>
-                                    <li><a href="#"><i class="icon-cat-shirt"></i>Fashion</a></li>
-                                    <li><a href="#"><i class="icon-cat-computer"></i>Electronics</a></li>
-                                    <li><a href="#"><i class="icon-cat-gift"></i>Gifts</a></li>
-                                    <li><a href="#"><i class="icon-cat-couch"></i>Home & Garden</a></li>
-                                    <li><a href="#"><i class="icon-cat-computer"></i>Music</a></li>
-                                    <li><a href="#"><i class="icon-cat-sport"></i>Sports</a></li>
-                                </ul>
-
-                                <a href="#" class="btn btn-block btn-primary">HUGE SALE - <strong>70%</strong> Off</a>
-                            </div><!-- End .side-menu-body -->
-                        </div><!-- End .side-custom-menu -->
-                    </div><!-- End .col-lg-3 -->
                 </div><!-- End .row -->
             </div><!-- End .container -->
         </div><!-- End .home-top-container -->
