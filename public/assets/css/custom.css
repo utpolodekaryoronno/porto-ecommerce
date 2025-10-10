@@ -74,3 +74,13 @@
 .dropdown-item{
     font-size: 12px !important;
 }
+.sidebar-brand-logo{
+    display: inline-flex;
+    gap: 4px;
+}
+.sidebar-brand-logo img{
+    height: 25px;
+    width: 28px;
+    border-radius: 50%;
+    display: inline-block;
+}

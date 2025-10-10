@@ -9,7 +9,7 @@
   <div class="mb-3">
     <ul class="list-unstyled">
       @foreach ($categories as  $category)
-          <li><a href="#" class="text-decoration-none d-block py-1">{{ $category->name }}</a></li>
+          <li><a href="{{ route('category.product', $category->slug) }}" class="text-decoration-none d-block py-1">{{ $category->name }}</a></li>
       @endforeach
     </ul>
   </div>
@@ -18,7 +18,10 @@
     <h4 class="border-bottom pb-2">Brands</h4>
     
       @foreach ($brands as $brand)
-          <a href="#" class="text-decoration-none py-1">{{ $brand->name }}</a> , &nbsp;
+            <a href="{{ route('brand.product', $brand->slug) }}" class="sidebar-brand-logo py-1">
+                <img src="{{ asset("media/brands/" . $brand->logo) }}" alt=" {{ $brand->name }}">
+                {{ $brand->name }}
+            </a> , &nbsp;
       @endforeach
     
   </div>
