@@ -19,6 +19,7 @@
                                     <th>Slug</th>
                                     <th>Categories</th>
                                     <th>Photo</th>
+                                    <th>Stock</th>
                                     <th>Created At</th>
                                     <th class="text-right">Action</th>
                                 </tr>
@@ -47,6 +48,7 @@
                                                 N/A
                                             @endif
                                         </td>
+                                        <td class="text-center">{{ $product->stock }}</td>
                                         <td>{{ $product->created_at->diffForHumans() }}</td>
                                         <td class="text-right">
                                             <a href="{{ route('product.show', $product->id) }}" class="btn btn-icon btn-primary"><i class="fa-solid fa-eye"></i></a>

@@ -106,6 +106,8 @@ class ProductController extends Controller
         // return $product->tags;
 
         // return $product->load('gallery', 'brand', 'categories', 'tags');
+
+        return view('BackEnd.product.show', compact('product'));
     }
 
     /**
@@ -113,7 +115,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return view('BackEnd.product.edit', compact('product'));
     }
 
     /**
@@ -121,14 +123,59 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        // validation
+        $request->validate([
+            'name' => 'required|unique:products,name,' . $product->id,
+            'subtitle' => 'required|max:255',
+            'regular_price' => 'required|numeric',
+            'sale_price' => 'nullable|numeric',
+            'short_desc' => 'nullable',
+            'long_desc' => 'nullable',
+        ]);
+
+        // Update data
+        $product ->update([
+            'name'          => $request->name,
+            'slug'          => $this->makeSlug($request->name),
+            'subtitle'      => $request->subtitle,
+            'regular_price' => $request->regular_price,
+            'sale_price'    => $request->sale_price,
+            'short_desc'    => $request->short_desc,
+            'long_desc'     => $request->long_desc,
+        ]);
+
+        // return
+        return redirect()->route('product.index')->with('success', 'Product Updated Successfully');
+
     }
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(Product $product)
-    {
-        //
+        {
+        // Delete all gallery images (from storage + DB)
+        if ($product->gallery && $product->gallery->count() > 0) {
+            foreach ($product->gallery as $image) {
+                $filePath = public_path('media/product/' . $image->file_name);
+                if (file_exists($filePath)) {
+                    unlink($filePath); // delete image from folder
+                }
+                $image->delete(); // delete record from DB
+            }
+        }
+
+        // Delete main product image if exists
+        if ($product->image && file_exists(public_path('media/product/' . $product->image))) {
+            unlink(public_path('media/product/' . $product->image));
+        }
+
+        // delete product
+        $product->delete();
+
+        //return back with success message
+        return back()->with('success', 'Product $ gallery deleted successfully!');
     }
+
+
 }

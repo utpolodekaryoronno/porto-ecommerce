@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Update Brand')
+@section('title', 'Update Product')
 @section('content')
     <main class="main">
         <div class="home-top-container">
@@ -8,29 +8,49 @@
                 <div class="row">
                     <div class="col-lg-9">
                         <div class="card shadow">
-                             <div class="card-header d-flex justify-content-between align-items-center">
-                                <h4 class="mb-0">Update Brand</h4>
-                                <a href="{{ route("brands.index") }}" class="btn btn-icon btn-primary">Back</a>
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h4 class="mb-0">Update Product</h4>
+                                <a href="{{ route("product.index") }}" class="btn btn-icon btn-primary">Back</a>
                             </div>
                             <div class="card-body">
-                                <form action="{{ route('brands.update', $brand->id) }}" method="POST" enctype="multipart/form-data" class="mb-0">
+                                <form action="{{ route('product.update', $product->id) }}" method="POST" enctype="multipart/form-data" class="mb-0">
                                     @csrf
                                     @method('PUT')
-                                    <div class="mb-3">
-                                        <label for="name" class="form-label">Brand Name</label>
-                                        <input type="text" class="form-control w-100" id="name" name="name" value="{{ old('name', $brand->name) }}">
+
+                                    <div class="row">
+                                        <div class="col-md-6 col-sm-12">
+                                            <div class="mb-2">
+                                                <label for="name" class="form-label">Product Name</label>
+                                                <input type="text" class="form-control w-100" id="name" name="name" value="{{ old('name', $product->name) }}">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-12">
+                                            <div class="mb-2">
+                                                <label for="subtitle" class="form-label">Subtitle</label>
+                                                <input type="text" class="form-control w-100" id="subtitle" name="subtitle" value="{{ old('subtitle', $product->subtitle) }}">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-12">
+                                            <div class="mb-2">
+                                                <label for="regular_price" class="form-label">Regular Price</label>
+                                                <input type="text" class="form-control w-100" id="regular_price" name="regular_price" value="{{ old('regular_price', $product->regular_price) }}">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-12">
+                                            <div class="mb-2">
+                                                <label for="sale_price" class="form-label">Sale Price</label>
+                                                <input type="text" class="form-control w-100" id="sale_price" name="sale_price" value="{{ old('sale_price', $product->sale_price) }}">
+                                            </div>
+                                        </div>
                                     </div>
-
-                                    <div class="mb-3">
-                                        <label for="logo" class="form-label d-block">Brand Logo</label>
-
-                                        <label for="logo" class="cover">
-                                            <img id="previewImage" src="{{ asset('media/brands/' .$brand->logo) }}" alt="{{$brand->name}}">
-                                        </label>
-                                        <input class="form-control" hidden type="file" id="logo" name="logo" onchange="previewFile(this)">
-
+                                    <div class="mb-2">
+                                        <label for="short_desc" class="form-label">Short Description</label>
+                                        <textarea class="form-control w-100" id="short_desc" name="short_desc">{{ old('short_desc', $product->short_desc) }}</textarea>
                                     </div>
-
+                                    <div class="mb-2">
+                                        <label for="long_desc" class="form-label">Long Description</label>
+                                        <textarea class="form-control w-100" id="long_desc" name="long_desc">{{ old('long_desc', $product->long_desc) }}</textarea>
+                                    </div>
                                     <button type="submit" class="btn btn-primary">Update</button>
                                 </form>
                             </div>

@@ -33,16 +33,16 @@
                                 <div class="row">
                                     <div class="col-sm-6 col-md-6 col-lg-4 count-container text-center">
                                         <div class="count-wrapper">
-                                            <span class="count" data-from="0" data-to="200" data-speed="2000" data-refresh-interval="50">200</span>+
+                                            <span class="count" data-from="0" data-to="{{ $products->count() - 1 }}" data-speed="2000" data-refresh-interval="50">{{ $products->count() - 1 }}</span>+
                                         </div><!-- End .count-wrapper -->
-                                        <h4 class="count-title">MILLION CUSTOMERS</h4>
+                                        <h4 class="count-title">Total Products</h4>
                                     </div><!-- End .col-md-4 -->
 
                                     <div class="col-sm-6 col-md-6 col-lg-4 count-container text-center">
                                         <div class="count-wrapper">
-                                            <span class="count" data-from="0" data-to="1800" data-speed="2000" data-refresh-interval="50">1800</span>+
+                                            <span class="count" data-from="0" data-to="{{ $brands->count() - 1 }}" data-speed="2000" data-refresh-interval="50">{{ $brands->count() - 1 }}</span>+
                                         </div><!-- End .count-wrapper -->
-                                        <h4 class="count-title">TEAM MEMBERS</h4>
+                                        <h4 class="count-title">Total Brands</h4>
                                     </div><!-- End .col-md-4 -->
 
                                     <div class="col-sm-6 col-md-6 col-lg-4 count-container text-center">

@@ -84,3 +84,13 @@
     border-radius: 50%;
     display: inline-block;
 }
+.show-product-image {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+.show-product-image img{
+    width: 150px;
+    height: 200px;
+    border-radius: 15px;
+}

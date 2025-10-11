@@ -59,7 +59,6 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="mb-2">
                                         <label for="short_desc" class="form-label">Short Description</label>
                                         <textarea class="form-control w-100" id="short_desc" name="short_desc">{{ old('short_desc') }}</textarea>
