@@ -115,7 +115,7 @@
                     @foreach ($products as $product )
                         <div class="product-default">
                             <figure>
-                                <a href="{{ url('/' . $product->slug) }}">
+                                <a href="{{ route('single.product' , $product->slug) }}">
                                      <img class="home-product-img" src="{{ asset('media/product/' . $product->gallery->first()->file_name) }}" alt="{{ $product->name }}">
                                 </a>
                             </figure>
@@ -127,7 +127,7 @@
                                     </div><!-- End .product-ratings -->
                                 </div><!-- End .product-container -->
                                 <h2 class="product-title">
-                                    <a href="{{ url('/' . $product->slug) }}">{{$product->name}}</a>
+                                    <a href="{{ route('single.product' , $product->slug) }}">{{$product->name}}</a>
                                 </h2>
                                 <div class="price-box">
                                     @if($product->sale_price)

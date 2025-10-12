@@ -57,7 +57,7 @@
                                         <span class="old-price text-decoration-line-through">${{$product->regular_price}}</span>
                                             <span class="product-price">${{ $product->sale_price }}</span>
                                     @else
-                                        <span class="product-price">${{ $product->sale_price }}</span>
+                                        <span class="product-price">${{ $product->regular_price }}</span>
                                     @endif
                                 </div><!-- End .price-box -->
 
@@ -249,9 +249,9 @@
             <aside class="sidebar-product col-lg-3 padding-left-lg mobile-sidebar">
                 <div class="sidebar-wrapper">
                     <div class="widget widget-brand">
-                        <a href="#">
-                            <img src="assets/images/product-brand.png" alt="brand name">
-                        </a>
+                        @if($product->brand)
+                            <img src="{{ asset('media/brands/' . $product->brand->logo) }}" alt="{{ $product->brand->name }}">
+                        @endif
                     </div><!-- End .widget -->
 
                     <div class="widget widget-info">
@@ -305,13 +305,13 @@
 
                 <div class="product-default">
                     <figure>
-                        <a href="{{ url('/' . $item->slug) }}">
+                        <a href="{{ route('single.product', $item->slug) }}">
                                 <img class="home-product-img" src="{{ asset('media/product/' . $item->gallery->first()->file_name) }}" alt="{{ $item->name }}">
                         </a>
                     </figure>
                     <div class="product-details">
                         <h2 class="product-title">
-                            <a href="{{ url('/' . $item->slug) }}">{{$item->name}}</a>
+                            <a href="{{ route('single.product', $item->slug) }}">{{$item->name}}</a>
                         </h2>
                         <div class="price-box">
                             @if($item->sale_price)

@@ -32,7 +32,7 @@ class FrontEndController extends Controller
 
     // Category related show product
     public function CategoryProduct($slug){
-        // get all regular data 
+        // get all regular data
         $products = Product::latest()->get();
         $categories = Category::latest()->get();
         $brands = Brand::latest()->get();
@@ -50,7 +50,7 @@ class FrontEndController extends Controller
 
     // Brand related show product
     public function BrandProduct($slug){
-        // get all regular data 
+        // get all regular data
         $products = Product::latest()->get();
         $categories = Category::latest()->get();
         $brands = Brand::latest()->get();
@@ -64,5 +64,12 @@ class FrontEndController extends Controller
         }
 
         return view('FrontEnd.brandRelatedProducts', compact('products', 'categories', 'brands', 'tags'));
+    }
+
+
+
+    // contact method
+    public function contact(){
+        return view('FrontEnd.contact');
     }
 }
