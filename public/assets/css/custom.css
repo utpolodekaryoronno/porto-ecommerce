@@ -94,3 +94,49 @@
     height: 200px;
     border-radius: 15px;
 }
+.box-shadow{
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.py-30px{
+    padding: 0px 30px;
+}
+
+
+
+/* Scroll Down Arrow */
+.scroll-down {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  text-decoration: none;
+  z-index: 9999;
+}
+
+.scroll-down span {
+  display: block;
+  width: 30px;
+  height: 30px;
+  border-bottom: 3px solid #FFF;
+  border-right: 3px solid #FFF;
+  transform: rotate(45deg);
+  animation: moveDown 1.5s infinite;
+}
+
+@keyframes moveDown {
+  0% {
+    transform: translateY(0) rotate(45deg);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateY(10px) rotate(45deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0) rotate(45deg);
+    opacity: 0.5;
+  }
+}

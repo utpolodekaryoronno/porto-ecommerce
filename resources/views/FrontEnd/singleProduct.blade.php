@@ -274,7 +274,7 @@
                     <div class="widget widget-banner">
                         <div class="banner banner-image">
                             <a href="#">
-                                <img src="assets/images/banners/banner-sidebar.jpg" alt="Banner Desc">
+                                <img src="{{ asset('assets/images/banners/banner-sidebar.jpg') }}" alt="Banner Desc">
                             </a>
                         </div><!-- End .banner -->
                     </div><!-- End .widget -->

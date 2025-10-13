@@ -67,9 +67,4 @@ class FrontEndController extends Controller
     }
 
 
-
-    // contact method
-    public function contact(){
-        return view('FrontEnd.contact');
-    }
 }
