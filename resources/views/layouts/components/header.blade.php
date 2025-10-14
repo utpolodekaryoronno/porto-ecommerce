@@ -125,6 +125,7 @@
                 <ul class="menu sf-arrows">
                     <li class="active"><a href="{{ route('home') }}">Home</a></li>
                     <li><a href="{{ route('contact.index') }}">Contact</a></li>
+                    <li><a href="{{ route('contact.pdf') }}">Contact Pdf Generate</a></li>
                     <li>
                         <a href="category.html" class="sf-with-ul">Categories</a>
                         <div class="megamenu megamenu-fixed-width">
@@ -256,12 +257,7 @@
                             <li><a href="forgot-password.html">Forgot Password</a></li>
                         </ul>
                     </li>
-                    <li><a href="#" class="sf-with-ul">Features</a>
-                        <ul>
-                            <li><a href="#">Header Types</a></li>
-                            <li><a href="#">Footer Types</a></li>
-                        </ul>
-                    </li>
+
                     <li class="float-right"><a href="https://1.envato.market/DdLk5" target="_blank">Buy Porto!</a></li>
                     <li class="float-right"><a href="#">Special Offer!</a></li>
                 </ul>

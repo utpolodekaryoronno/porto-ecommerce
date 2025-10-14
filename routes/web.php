@@ -27,7 +27,8 @@ Route::resource('product', ProductController::class);
 // Contact route
 Route::resource('contact', ContactController::class);
 
-
+Route::get('/contact-pdf', [ContactController::class, 'ContactPdf'])->name('contact.pdf');
+Route::post('/contact-pdf', [ContactController::class, 'CreatePdf'])->name('create.pdf');
 
 
 

@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Contact;
+use App\Mail\ContactPdfMail;
 use Illuminate\Http\Request;
 use App\Mail\ContactConfirmMail;
+use Spatie\LaravelPdf\Facades\Pdf;
 use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
@@ -16,6 +18,46 @@ class ContactController extends Controller
     {
         return view('contact.index');
     }
+
+    // contact pdf
+    public function ContactPdf()
+    {
+        return view('contact.pdfGenaratorForm');
+    }
+
+    // create pdf
+   public function CreatePdf(Request $request)
+    {
+        $name = $this->makeSlug($request->name);
+
+
+        // Generate a random number or string
+        $random = rand(1000, 9999);
+
+        // Generate and save the PDF
+        $pdfFileName = "contact-{$name}-{$random}.pdf";
+
+        Pdf::view('pdf.contactPdf', [
+            'name'    => $request->name,
+            'email'   => $request->email,
+            'phone'   => $request->phone,
+            'address' => $request->address,
+        ])->save(public_path("/pdf/{$pdfFileName}"));
+
+        // Send email with PDF attached
+        Mail::to($request->email)->send(
+            new ContactPdfMail(
+                $request->name,
+                $request->email,
+                $request->phone,
+                $request->address,
+                $pdfFileName
+            )
+        );
+
+        return back()->with('success', 'PDF created and email sent successfully!');
+    }
+
 
     /**
      * Show the form for creating a new resource.
