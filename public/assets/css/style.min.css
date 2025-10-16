@@ -5503,6 +5503,9 @@ label {
     .form-footer {
         margin-bottom: 5rem
     }
+    .cart-table form{
+    margin-bottom: 0px !important;
+    }
 }
 
 .btn {

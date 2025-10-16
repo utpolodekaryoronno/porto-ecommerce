@@ -10,6 +10,8 @@
     <meta name="keywords" content="HTML5 Template" />
     <meta name="description" content="Porto - Bootstrap eCommerce Template">
     <meta name="author" content="SW-THEMES">
+    {{-- for ajax --}}
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="{{ asset('assets/images/icons/favicon.ico') }}">
@@ -151,7 +153,7 @@
 
 
     <!-- Add Cart Modal -->
-    <div class="modal fade" id="addCartModal" tabindex="-1" role="dialog" aria-labelledby="addCartModal" aria-hidden="true">
+    {{-- <div class="modal fade" id="addCartModal" tabindex="-1" role="dialog" aria-labelledby="addCartModal" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-body add-cart-box text-center">
@@ -159,13 +161,13 @@
             <h4 id="productTitle"></h4>
             <img src="#" id="productImage" width="100" height="100" alt="adding cart image">
             <div class="btn-actions">
-                <a href="cart.html"><button class="btn-primary">Go to cart page</button></a>
-                <a href="#"><button class="btn-primary" data-dismiss="modal">Continue</button></a>
+                <a href="{{ route('cart.index') }}"><button class="btn-primary">Go to cart page</button></a>
+                <a href="#"><button class="btn-primary" data-dismiss="modal">Cancle</button></a>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </div> --}}
 
     <a id="scroll-top" href="#top" title="Top" role="button"><i class="icon-angle-up"></i></a>
 

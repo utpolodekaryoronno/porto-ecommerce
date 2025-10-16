@@ -140,3 +140,112 @@
     opacity: 0.5;
   }
 }
+
+
+
+
+
+/* Invoice  */
+
+.invoice-container {
+    max-width: 1000px;
+    width: 100%;
+    margin: auto;
+  font-family: Arial, sans-serif;
+  padding: 40px 20px;
+}
+
+.invoice-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.invoice-table th,
+.invoice-table td {
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+.invoice-table .total {
+  font-weight: bold;
+}
+
+.invoice-input {
+  width: 70px;
+  text-align: center;
+}
+.thead-gray{
+    background: #b1adad8e;
+}
+.cart-table form{
+    margin-bottom: 0px !important;
+}
+.cart-table td img{
+    display: inline-block !important;
+}
+
+.product-qty-change{
+    max-width: 60px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0px !important;
+}
+.custom-quantity .form-control{
+    margin-bottom: 0px !important;
+    height: 3.6rem !important;
+    border: 1px solid #ccc;
+}
+.custom-quantity .btn{
+    box-shadow: none;
+}
+.confirm-order-section form{
+    max-width: 600px;
+    width: 100%;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    padding: 30px;
+}
+
+
+.cart-btn {
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.cart-icon {
+    position: relative;
+    width: 50px;
+    height: 40px;
+    background-color: #0091ea; /* blue background like your image */
+    color: white;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.cart-icon i {
+    font-size: 22px;
+}
+
+.cart-badge {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    background-color: #ff7043;
+    color: white;
+    border-radius: 50%;
+    height: 22px;
+    width: 22px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: bold;
+}
+.cart-btn:hover .cart-icon {
+    background-color: #007acc;
+}

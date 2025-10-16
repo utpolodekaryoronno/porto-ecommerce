@@ -112,42 +112,47 @@
                         }
                     }
                 }">
-                    @foreach ($products as $product )
-                        <div class="product-default">
-                            <figure>
-                                <a href="{{ route('single.product' , $product->slug) }}">
-                                     <img class="home-product-img" src="{{ asset('media/product/' . $product->gallery->first()->file_name) }}" alt="{{ $product->name }}">
-                                </a>
-                            </figure>
-                            <div class="product-details">
-                                <div class="ratings-container">
-                                    <div class="product-ratings">
-                                        <span class="ratings" style="width:100%"></span><!-- End .ratings -->
-                                        <span class="tooltiptext tooltip-top"></span>
-                                    </div><!-- End .product-ratings -->
-                                </div><!-- End .product-container -->
-                                <h2 class="product-title">
-                                    <a href="{{ route('single.product' , $product->slug) }}">{{$product->name}}</a>
-                                </h2>
-                                <div class="price-box">
-                                    @if($product->sale_price)
-                                        <span class="product-price text-decoration-line-through" >$ {{$product->regular_price}}</span> &nbsp; &nbsp;
-                                        <span class="product-price">$ {{$product->sale_price}}</span>
-                                    @else
-                                        <span class="product-price">$ {{$product->regular_price}}</span>
-                                    @endif
+                @foreach ($products as $product)
+                    <div class="product-default">
+                        <figure>
+                            <a href="{{ route('single.product', $product->slug) }}">
+                                <img class="home-product-img" src="{{ asset('media/product/' . $product->gallery->first()->file_name) }}" alt="{{ $product->name }}">
+                            </a>
+                        </figure>
+                        <div class="product-details">
+                            <h2 class="product-title">
+                                <a href="{{ route('single.product', $product->slug) }}">{{ $product->name }}</a>
+                            </h2>
 
-                                </div><!-- End .price-box -->
-                                <div class="product-action">
-                                    <a href="#" class="btn-icon-wish"><i class="icon-heart"></i></a>
-                                    <button class="btn-icon btn-add-cart" data-toggle="modal" data-target="#addCartModal"><i class="icon-bag"></i>ADD TO CART</button>
-                                    <a href="ajax/product-quick-view.html" class="btn-quickview" title="Quick View"><i class="fas fa-external-link-alt"></i></a>
-                                </div>
-                            </div><!-- End .product-details -->
+                            <div class="price-box">
+                                @if($product->sale_price)
+                                    <span class="product-price text-decoration-line-through">${{ $product->regular_price }}</span>
+                                    &nbsp;
+                                    <span class="product-price">${{ $product->sale_price }}</span>
+                                @else
+                                    <span class="product-price">${{ $product->regular_price }}</span>
+                                @endif
+                            </div>
+
+                            <!-- ✅ Add to Cart Button -->
+                            <form action="{{ route('cart.store') }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="icon-bag"></i> ADD TO CART
+                                </button>
+                            </form>
                         </div>
-                    @endforeach
+                    </div>
+                @endforeach
                 </div>
             </div>
         </section>
     </main><!-- End .main -->
+
+    {{-- card store js with ajax  --}}
+
+
+
+
 @endsection
