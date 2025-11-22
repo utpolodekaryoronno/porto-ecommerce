@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Contact;
 use App\Mail\ContactPdfMail;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 use App\Mail\ContactConfirmMail;
-use Spatie\LaravelPdf\Facades\Pdf;
 use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
@@ -78,12 +78,14 @@ class ContactController extends Controller
         // Generate and save the PDF
         $pdfFileName = "contact-{$name}-{$random}.pdf";
 
-        Pdf::view('pdf.contactPdf', [
+        Pdf::loadView('pdf.contactPdf', [
             'name'    => $request->name,
             'email'   => $request->email,
             'phone'   => $request->phone,
             'address' => $request->address,
-        ])->save(public_path("/pdf/{$pdfFileName}"));
+        ])
+        ->setPaper('a4', 'portrait')
+        ->save(public_path("/pdf/{$pdfFileName}"));
 
         // Send email with PDF attached
         Mail::to($request->email)->send(

@@ -8,7 +8,7 @@
 
 
     @if(count($cart) > 0)
-    <div class="d-flex justify-content-end mb-3">
+    <div class="mb-3">
         <a href="{{ route('home') }}" class="btn btn-primary">Continue Shopping</a>
     </div>
     <div>

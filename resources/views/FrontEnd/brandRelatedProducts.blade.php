@@ -50,9 +50,14 @@
 
                                 </div><!-- End .price-box -->
                                 <div class="product-action">
-                                    <a href="#" class="btn-icon-wish"><i class="icon-heart"></i></a>
-                                    <button class="btn-icon btn-add-cart" data-toggle="modal" data-target="#addCartModal"><i class="icon-bag"></i>ADD TO CART</button>
-                                    <a href="ajax/product-quick-view.html" class="btn-quickview" title="Quick View"><i class="fas fa-external-link-alt"></i></a>
+                                    <!-- ✅ Add to Cart Button -->
+                                    <form action="{{ route('cart.store') }}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                        <button type="submit" class="btn btn-primary">
+                                            <i class="icon-bag"></i> ADD TO CART
+                                        </button>
+                                    </form>
                                 </div>
                             </div><!-- End .product-details -->
                         </div>

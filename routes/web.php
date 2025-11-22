@@ -15,7 +15,7 @@ use App\Http\Controllers\FrontEndController;
 
 Route::get('/', [FrontEndController::class, 'index'])->name('home');
 Route::get('/singleProduct/{slug}', [FrontEndController::class, 'ShowSingleProduct'])->name('single.product');
-Route::get('/category/{slug}', [FrontEndController::class, 'CategoryProduct'])->name('category.product');
+Route::get('/categories/{slug}', [FrontEndController::class, 'CategoryProduct'])->name('category.product');
 Route::get('/brand/{slug}', [FrontEndController::class, 'BrandProduct'])->name('brand.product');
 
 Route::get('/admin', [AdminController::class, 'admin'])->name('admin');
@@ -35,7 +35,7 @@ Route::post('/contact-pdf', [ContactController::class, 'CreatePdf'])->name('crea
 
 
 
-// Cart add route
+// add Cart route
 Route::resource('cart', CartController::class);
 // Order Invoice Route
 Route::post('/confirm-order', [OrderController::class, 'store'])->name('order.store');

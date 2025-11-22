@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Spatie\LaravelPdf\Facades\Pdf;
-use Illuminate\Support\Facades\Mail;
 use App\Mail\OrderInvoiceMail;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
 {
@@ -33,17 +33,20 @@ class OrderController extends Controller
         $filePath = public_path("invoices/{$fileName}");
 
         // Create PDF with product details
-        Pdf::view('pdf.invoice', [
+        Pdf::loadView('pdf.invoice', [
             'name'        => $request->name,
             'email'       => $request->email,
             'cart'        => $cart,
             'grandTotal'  => $grandTotal,
-        ])->save($filePath);
+        ])
+        ->setPaper('a4', 'portrait')
+        ->save($filePath);
 
         // Send email with PDF attached
         Mail::to($request->email)->send(
             new OrderInvoiceMail($request->name, $cart, $grandTotal, $fileName)
         );
+
 
         // Optional: Clear cart after confirming
         session()->forget('cart');
@@ -51,3 +54,5 @@ class OrderController extends Controller
         return back()->with('success', 'Invoice PDF generated and sent to your email!');
     }
 }
+
+

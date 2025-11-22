@@ -86,26 +86,16 @@
                                 </div><!-- End .product-filters-container -->
 
                                 <div class="product-action product-all-icons">
-                                    <div class="product-single-qty">
-                                        <input class="horizontal-quantity form-control" type="text">
-                                    </div><!-- End .product-single-qty -->
-
-                                    <a href="cart.html" class="paction add-cart" title="Add to Cart">
-                                        <span>Add to Cart</span>
-                                    </a>
-                                    <a href="#" class="paction add-wishlist" title="Add to Wishlist">
-                                        <span>Add to Wishlist</span>
-                                    </a>
-                                    <a href="#" class="paction add-compare" title="Add to Compare">
-                                        <span>Add to Compare</span>
-                                    </a>
+                                    <!-- ✅ Add to Cart Button -->
+                                    <form action="{{ route('cart.store') }}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                        <button type="submit" class="btn btn-primary">
+                                            <i class="icon-bag"></i> ADD TO CART
+                                        </button>
+                                    </form>
                                 </div><!-- End .product-action -->
 
-                                <div class="product-single-share">
-                                    <label>Share:</label>
-                                    <!-- www.addthis.com share plugin-->
-                                    <div class="addthis_inline_share_toolbox"></div>
-                                </div><!-- End .product single-share -->
                             </div><!-- End .product-single-details -->
                         </div><!-- End .col-lg-5 -->
                     </div><!-- End .row -->
@@ -323,9 +313,14 @@
 
                         </div><!-- End .price-box -->
                         <div class="product-action">
-                            <a href="#" class="btn-icon-wish"><i class="icon-heart"></i></a>
-                            <button class="btn-icon btn-add-cart" data-toggle="modal" data-target="#addCartModal"><i class="icon-bag"></i>ADD TO CART</button>
-                            <a href="ajax/product-quick-view.html" class="btn-quickview" title="Quick View"><i class="fas fa-external-link-alt"></i></a>
+                           <!-- ✅ Add to Cart Button -->
+                            <form action="{{ route('cart.store') }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="icon-bag"></i> ADD TO CART
+                                </button>
+                            </form>
                         </div>
                     </div><!-- End .product-details -->
                 </div>
