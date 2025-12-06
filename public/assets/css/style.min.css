@@ -428,7 +428,8 @@ a:focus {
     display: -ms-flexbox;
     display: flex;
     -ms-flex-align: center;
-    align-items: center
+    align-items: center;
+    justify-content: space-between;
 }
 
 .header .btn-remove::before {
@@ -503,8 +504,8 @@ a:focus {
 }
 
 .header-middle {
-    padding-top: 3.5rem;
-    padding-bottom: 3.5rem
+    padding-top: 3rem;
+    padding-bottom: 3rem
 }
 
 .logo {
@@ -1131,27 +1132,15 @@ a:focus {
 
 .header-contact {
     position: relative;
-    margin-right: 4rem;
-    padding-left: 4.5rem;
+    margin-right: 3rem;
+    padding-left: 4rem;
     color: #bde1f5;
     font-size: 1.8rem;
     letter-spacing: 0;
     line-height: 1.4
 }
 
-.header-contact::before {
-    display: inline-block;
-    position: absolute;
-    top: 50%;
-    left: 0;
-    -webkit-transform: translateY(-50%);
-    transform: translateY(-50%);
-    color: #0af;
-    font-family: 'porto';
-    font-size: 3rem;
-    line-height: 1;
-    content: '\e887'
-}
+
 
 .header-contact span {
     display: block;
@@ -1318,9 +1307,7 @@ a:focus {
         padding-left: 150px
     }
 
-    .header-contact {
-        margin-right: 8rem
-    }
+
 }
 
 @media screen and (max-width: 991px) {
@@ -5403,7 +5390,7 @@ label {
 
 .select-custom .form-control,
 .select-custom .form-control-sm {
-    padding-right: 4rem
+    padding-right: 3rem;
 }
 
 .form-group-custom-control {

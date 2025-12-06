@@ -1,3 +1,7 @@
+
+.header-contact .btn-outline:hover{
+    border: 1px solid #000 !important;
+}
 .form-control.w-100{
     max-width: 100%;
     width: 100% !important;

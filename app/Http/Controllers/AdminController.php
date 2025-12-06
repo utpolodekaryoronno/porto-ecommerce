@@ -11,6 +11,9 @@ class AdminController extends Controller
         $products = Product::latest()->get();
         return view('BackEnd.product.index', compact('products'));
     }
+
+
+
 }
 
 

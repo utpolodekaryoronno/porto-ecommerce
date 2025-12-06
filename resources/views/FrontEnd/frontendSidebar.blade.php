@@ -1,10 +1,13 @@
 <div class="col-lg-3 order-lg-first">
-    <a href="{{ route("admin") }}" class="btn btn-primary mb-1 d-block">Go Admin</a>
+    @if (Auth::guard('web')->check() && Auth::guard('web')->user()->role === 'admin')
+        <a href="{{ route("admin") }}" class="btn btn-primary mb-1 d-block">Go Admin</a>
+    @endif
+
     <div class="side-custom-menu">
         <h2>TOP CATEGORIES</h2>
 
         <div class="bg-light border rounded p-3">
-  
+
   <!-- Product Categories -->
   <div class="mb-3">
     <ul class="list-unstyled">
@@ -16,27 +19,27 @@
   <!-- Product Brands -->
   <div class="mb-3">
     <h4 class="border-bottom pb-2">Brands</h4>
-    
+
       @foreach ($brands as $brand)
             <a href="{{ route('brand.product', $brand->slug) }}" class="sidebar-brand-logo py-1">
                 <img src="{{ asset("media/brands/" . $brand->logo) }}" alt=" {{ $brand->name }}">
                 {{ $brand->name }}
             </a> , &nbsp;
       @endforeach
-    
+
   </div>
   <!-- Product Tags (Dropdown) -->
   <div>
     <h4 class="border-bottom pb-2 pb-3">Tags</h4>
     <div class="dropdown">
-        <button class="btn btn-outline-secondary w-100 d-flex justify-content-between align-items-center dropdown-toggle" 
+        <button class="btn btn-outline-secondary w-100 d-flex justify-content-between align-items-center dropdown-toggle"
                 type="button" id="tagsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <span>Show Tags</span>
         </button>
         <div class="dropdown-menu w-100" aria-labelledby="tagsDropdown">
             @foreach ($tags as $tag)
                 <a class="dropdown-item f-size-15px" href="#">{{ $tag->name }}</a>
-            @endforeach        
+            @endforeach
         </div>
     </div>
 </div>

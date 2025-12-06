@@ -7,7 +7,7 @@
                 </a>
             </div><!-- End .header-left -->
 
-            <div class="header-center">
+            {{-- <div class="header-center">
                 <div class="header-search">
                     <a href="#" class="search-toggle" role="button"><i class="icon-magnifier"></i></a>
                     <form action="#" method="get">
@@ -22,32 +22,62 @@
                                     <option value="66">- Jewellery</option>
                                     <option value="67">- Kids Fashion</option>
                                     <option value="5">Electronics</option>
-                                    <option value="21">- Smart TVs</option>
-                                    <option value="22">- Cameras</option>
-                                    <option value="63">- Games</option>
-                                    <option value="7">Home &amp; Garden</option>
-                                    <option value="11">Motors</option>
-                                    <option value="31">- Cars and Trucks</option>
-                                    <option value="32">- Motorcycles &amp; Powersports</option>
-                                    <option value="33">- Parts &amp; Accessories</option>
-                                    <option value="34">- Boats</option>
-                                    <option value="57">- Auto Tools &amp; Supplies</option>
                                 </select>
                             </div><!-- End .select-custom -->
                             <button class="btn" type="submit"><i class="icon-magnifier"></i></button>
                         </div><!-- End .header-search-wrapper -->
                     </form>
                 </div><!-- End .header-search -->
-            </div><!-- End .headeer-center -->
+            </div>  <!-- End .headeer-center --> --}}
+
+            <div class="header-center">
+    <div class="header-search">
+        <a href="#" class="search-toggle" role="button"><i class="icon-magnifier"></i></a>
+        <form action="" method="GET">
+            <div class="header-search-wrapper">
+                <input type="search" class="form-control" name="q" id="q" placeholder="Search in...">
+
+                <!-- Dynamic Category Dropdown -->
+                <div class="select-custom">
+                    <select name="cat" id="cat" class="form-control">
+                        <option value="">All Categories</option>
+
+                        {{-- @foreach($categories as $category)
+                            <option value="{{ $category->id }}">
+                                {{ $category->name }}
+                            </option>
+                        @endforeach --}}
+                    </select>
+                </div>
+                <!-- End .select-custom -->
+
+                <button class="btn" type="submit"><i class="icon-magnifier"></i></button>
+            </div>
+        </form>
+    </div>
+</div>
 
             <div class="header-right">
                 <button class="mobile-menu-toggler" type="button">
                     <i class="icon-menu"></i>
                 </button>
-                <div class="header-contact">
-                    <span>Call us now</span>
-                    <a href="tel:#"><strong>+123 5678 890</strong></a>
-                </div><!-- End .header-contact -->
+                @if (Auth::guard('web')->check()){
+                    <div class="header-contact">
+                        <form action="{{route("logout")}}" method="POST" class="mb-0">
+                            @csrf
+                            <button type="submit" class="btn btn-outline mx-2">Logout</button>
+                        </form>
+                    </div>
+                }
+                @else{
+
+                    <div class="header-contact">
+                        <a href="{{route("register")}}" class="btn btn-outline mx-2">Sign Up</a>
+                        <a href="{{route("login")}}" class="btn btn-outline mx-2">Login</a>
+                    </div><!-- End .header-contact -->
+                }
+                @endif
+
 
                 <a href="{{ route('cart.index') }}" class="cart-btn">
                     <div class="cart-icon">
@@ -201,6 +231,7 @@
                     </li>
 
                     <li class="float-right"><a href="https://1.envato.market/DdLk5" target="_blank">Buy Porto!</a></li>
+                    <li class="float-right"><a href="#">Special Offer!</a></li>
                     <li class="float-right"><a href="#">Special Offer!</a></li>
                 </ul>
             </nav>
