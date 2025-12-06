@@ -95,9 +95,21 @@
         <div class="container">
             <nav class="main-nav">
                 <ul class="menu sf-arrows">
-                    <li class="active"><a href="{{ route('home') }}">Home</a></li>
-                    <li><a href="{{ route('contact.index') }}">Contact</a></li>
-                    <li><a href="{{ route('contact.pdf') }}">Contact Pdf Generate</a></li>
+                    <li class="{{ Route::is('home') ? 'active' : ''}}"><a href="{{ route('home') }}">Home</a></li>
+
+                    @if (Auth::guard('web')->check() && Auth::guard('web')->user()->role == 'admin')
+                        <li class="{{ Route::is('contact.index') ? 'active' : ''}}">
+                            <a href="{{ route('contact.index') }}">
+                                Contact
+                            </a>
+                        </li>
+
+                        <li class="{{ Route::is('contact.pdf') ? 'active' : ''}}">
+                            <a href="{{ route('contact.pdf') }}">
+                                Contact PDF Generate
+                            </a>
+                        </li>
+                    @endif
                     <li>
                         <a href="category.html" class="sf-with-ul">Categories</a>
                         <div class="megamenu megamenu-fixed-width">
@@ -231,7 +243,6 @@
                     </li>
 
                     <li class="float-right"><a href="https://1.envato.market/DdLk5" target="_blank">Buy Porto!</a></li>
-                    <li class="float-right"><a href="#">Special Offer!</a></li>
                     <li class="float-right"><a href="#">Special Offer!</a></li>
                 </ul>
             </nav>

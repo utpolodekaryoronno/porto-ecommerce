@@ -77,6 +77,11 @@ class AuthController extends Controller
     // 🚪 Logout
     public function logout(Request $request)
     {
+        // If you added cart, then session will destroy
+        $cart = session('cart', []);
+        session()->forget('cart');
+
+
         Auth::guard('web')->logout();
 
         return redirect()->route('home')->with('success', 'Logged out successfully.');

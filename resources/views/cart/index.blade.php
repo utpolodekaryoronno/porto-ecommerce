@@ -65,12 +65,12 @@
 
                 <div class="mb-3">
                     <label for="name" class="form-label">Name</label>
-                    <input type="text" class="form-control w-100" id="name" name="name" value="{{ old('name') }}">
+                    <input type="text" readonly  class="form-control w-100" id="name" name="name" value="{{ old('name', Auth::guard("web")->user()->name ?? '') }}">
                 </div>
 
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control w-100" id="email" name="email">
+                    <input type="email" readonly class="form-control w-100" id="email" name="email" value="{{old('email', Auth::guard('web')->user()->email ?? '')}}">
                 </div>
 
                 <button type="submit" class="btn btn-primary">Confirm</button>
