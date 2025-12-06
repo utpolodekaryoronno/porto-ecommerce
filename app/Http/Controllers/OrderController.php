@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Mail\OrderInvoiceMail;
 use Barryvdh\DomPDF\Facade\Pdf;
@@ -26,6 +27,13 @@ class OrderController extends Controller
         $grandTotal = collect($cart)->sum(function ($item) {
             return $item['price'] * $item['quantity'];
         });
+
+        // Decrement Product Stock
+        foreach ($cart as $productId => $item) {
+            Product::where('id', $productId)
+                    ->decrement('stock', $item['quantity']);
+        }
+
 
         // Generate PDF filename
         $nameSlug = strtolower(str_replace(' ', '-', $request->name));

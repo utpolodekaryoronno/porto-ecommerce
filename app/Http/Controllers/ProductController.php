@@ -140,6 +140,7 @@ class ProductController extends Controller
             'subtitle'      => $request->subtitle,
             'regular_price' => $request->regular_price,
             'sale_price'    => $request->sale_price,
+            'stock'         => $request->stock,
             'short_desc'    => $request->short_desc,
             'long_desc'     => $request->long_desc,
         ]);

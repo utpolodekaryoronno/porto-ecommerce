@@ -42,6 +42,12 @@
                                                 <input type="text" class="form-control w-100" id="sale_price" name="sale_price" value="{{ old('sale_price', $product->sale_price) }}">
                                             </div>
                                         </div>
+                                        <div class="col-md-6 col-sm-12">
+                                            <div class="mb-2">
+                                                <label for="stock" class="form-label">Stock</label>
+                                                <input type="text" class="form-control w-100" id="stock" name="stock" value="{{ old('stock', $product->stock) }}">
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="mb-2">
                                         <label for="short_desc" class="form-label">Short Description</label>
