@@ -11,6 +11,17 @@ class CartController extends Controller
     public function index()
     {
         $cart = session()->get('cart', []);
+
+        // ✅ Stripe এর জন্য
+        $grandTotal = 0;
+        foreach ($cart as $item) {
+            $grandTotal += $item['price'] * $item['quantity'];
+        }
+
+        // ✅ Stripe এর জন্য numeric total session এ রাখুন
+        session(['cart_grand_total' => $grandTotal]);
+
+
         return view('cart.index', compact('cart'));
     }
 
@@ -59,6 +70,10 @@ class CartController extends Controller
         $grandTotal = array_sum(array_map(function ($item) {
             return $item['price'] * $item['quantity'];
         }, $cart));
+
+         //// ✅ Stripe এর জন্য
+        session(['cart_grand_total' => $grandTotal]);
+
 
         return response()->json([
             'itemTotal' => number_format($itemTotal, 2),

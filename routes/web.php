@@ -7,6 +7,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\StripeController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ProductController;
@@ -58,10 +59,13 @@ Route::middleware('IsNotAuthenticate.All.lUser')->group( function(){
     Route::post('/confirm-order', [OrderController::class, 'store'])->name('order.store');
 
 
-
     // Logout
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/logout', [FrontEndController::class, 'index'])->name('home');
+
+
+
+
 });
 
 
@@ -79,6 +83,9 @@ Route::middleware('isAuthenticateMiddleware')->group( function(){
 
 
 
+// Stripe route
+Route::post('/stripe/pay', [StripeController::class, 'pay'])->name('stripe.pay');
+Route::post('/stripe/payment-success', [StripeController::class, 'success'])->name('stripe.success');
 
 
 

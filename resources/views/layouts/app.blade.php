@@ -38,6 +38,9 @@
     <!-- Toastr CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
+    {{-- stripe --}}
+    <script src="https://js.stripe.com/v3/"></script>
+
     <!-- Main CSS File -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
@@ -247,7 +250,7 @@
         });
     </script>
 
-    // Cover change js ==============================================
+    {{-- // Cover change js ============================================== --}}
     <script>
         function previewFile(input) {
             const file = input.files[0];
