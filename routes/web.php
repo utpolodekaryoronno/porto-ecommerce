@@ -27,6 +27,8 @@ Route::controller(FrontEndController::class)->group(function () {
     Route::get('/singleProduct/{slug}', 'ShowSingleProduct')->name('single.product');
     Route::get('/categories/{slug}', 'CategoryProduct')->name('category.product');
     Route::get('/brand/{slug}', 'BrandProduct')->name('brand.product');
+    Route::get('/search', 'SearchProduct')->name('search.product');
+    Route::get('/search/suggest',  'searchSuggest')->name('search.suggest');
 });
 
 

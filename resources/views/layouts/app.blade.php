@@ -250,5 +250,48 @@
     </script>
 
 
+
+    // search auto suggest
+    <script>
+        $(document).ready(function(){
+
+            $('#search-box').on('keyup', function(){
+
+                let query = $(this).val();
+
+                if(query.length < 2){
+                    $('#suggest-list').hide().html('');
+                    return;
+                }
+
+                $.get('{{ route('search.suggest') }}', { q: query }, function(data){
+
+                    let html = '';
+
+                    data.forEach(p => {
+                        html += `
+                            <a href="{{ route('search.product') }}?q=${encodeURIComponent(p.name)}"
+                            class="list-group-item list-group-item-action">
+                            ${p.name}
+                            </a>
+                        `;
+                    });
+
+                    $('#suggest-list').html(html).show();
+
+                });
+            });
+
+        });
+    </script>
+
+    <script>
+        $(document).click(function(e){
+            if(!$(e.target).closest('.header-search').length){
+                $('#suggest-list').hide();
+            }
+        });
+    </script>
+
 </body>
 </html>

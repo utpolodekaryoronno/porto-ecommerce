@@ -7,55 +7,21 @@
                 </a>
             </div><!-- End .header-left -->
 
-            {{-- <div class="header-center">
-                <div class="header-search">
-                    <a href="#" class="search-toggle" role="button"><i class="icon-magnifier"></i></a>
-                    <form action="#" method="get">
-                        <div class="header-search-wrapper">
-                            <input type="search" class="form-control" name="q" id="q" placeholder="Search..." required>
-                            <div class="select-custom">
-                                <select id="cat" name="cat">
-                                    <option value="">All Categories</option>
-                                    <option value="4">Fashion</option>
-                                    <option value="12">- Women</option>
-                                    <option value="13">- Men</option>
-                                    <option value="66">- Jewellery</option>
-                                    <option value="67">- Kids Fashion</option>
-                                    <option value="5">Electronics</option>
-                                </select>
-                            </div><!-- End .select-custom -->
-                            <button class="btn" type="submit"><i class="icon-magnifier"></i></button>
-                        </div><!-- End .header-search-wrapper -->
-                    </form>
-                </div><!-- End .header-search -->
-            </div>  <!-- End .headeer-center --> --}}
+
 
             <div class="header-center">
-    <div class="header-search">
-        <a href="#" class="search-toggle" role="button"><i class="icon-magnifier"></i></a>
-        <form action="" method="GET">
-            <div class="header-search-wrapper">
-                <input type="search" class="form-control" name="q" id="q" placeholder="Search in...">
+                <div class="header-search">
+                    <a href="#" class="search-toggle" role="button"><i class="icon-magnifier"></i></a>
+                    <form action="{{route('search.product')}}" method="GET">
+                        <div class="header-search-wrapper position-relative">
+                            <input type="search"  id="search-box"   class="form-control" name="q" value="{{ request('q') }}" placeholder="Search products...">
 
-                <!-- Dynamic Category Dropdown -->
-                <div class="select-custom">
-                    <select name="cat" id="cat" class="form-control">
-                        <option value="">All Categories</option>
-
-                        {{-- @foreach($categories as $category)
-                            <option value="{{ $category->id }}">
-                                {{ $category->name }}
-                            </option>
-                        @endforeach --}}
-                    </select>
+                             <div id="suggest-list" class="list-group position-absolute w-100"></div>
+                            <button class="btn" type="submit"><i class="icon-magnifier"></i></button>
+                        </div>
+                    </form>
                 </div>
-                <!-- End .select-custom -->
-
-                <button class="btn" type="submit"><i class="icon-magnifier"></i></button>
             </div>
-        </form>
-    </div>
-</div>
 
             <div class="header-right">
                 <button class="mobile-menu-toggler" type="button">
@@ -249,3 +215,5 @@
         </div><!-- End .header-bottom -->
     </div><!-- End .header-bottom -->
 </header><!-- End .header -->
+
+

@@ -67,4 +67,35 @@ class FrontEndController extends Controller
     }
 
 
+    // Product Search
+    public function SearchProduct(Request $request){
+        $products = Product::query()
+            ->with('gallery')
+            ->when($request->filled('q'), function ($query) use ($request) {
+                $search = $request->q;
+
+                $query->where(function ($q) use ($search) {
+                    $q->where('name', 'like', "%{$search}%")
+                    ->orWhere('subtitle', 'like', "%{$search}%");
+                });
+            })->get();
+
+        $categories = Category::latest()->get();
+        $brands = Brand::latest()->get();
+        $tags = Tag::latest()->get();
+
+        return view('FrontEnd.search', compact('products', 'categories', 'brands', 'tags'));
+    }
+
+
+    // Auto Suggest Product Search
+    public function searchSuggest(Request $request)
+    {
+        $products = Product::where('name','LIKE','%'.$request->q.'%')
+            ->limit(5)
+            ->get(['name','slug']);
+
+        return response()->json($products);
+    }
+    
 }
